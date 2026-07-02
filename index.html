@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador - Biología Celular</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- INICIO -->
+<div id="app">
+  <div id="pantalla-inicio" class="screen">
+    <div class="logo">🧬</div>
+    <h1>Simulador de Biología Celular</h1>
+    <p class="subtitle">20 preguntas · Cronómetro · Revisión detallada</p>
+    <p id="fecha" class="fecha"></p>
+    <div class="info-cards">
+      <div class="info-card"><span>📝</span><span>15 Opción múltiple</span></div>
+      <div class="info-card"><span>✍️</span><span>5 Preguntas abiertas</span></div>
+    </div>
+    <button class="btn-primary" onclick="iniciarSimulacro()">Comenzar simulacro</button>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="pantalla-quiz" class="screen" style="display:none">
+    <div class="quiz-header">
+      <div class="timer-box">
+        <span class="timer-icon">⏱</span>
+        <span id="cronometro">00:00:00</span>
+      </div>
+      <div class="quiz-meta">
+        <span id="contador-preguntas">1 / 20</span>
+        <button class="btn-icon" id="btnPausa" onclick="togglePausa()">⏸</button>
+      </div>
+    </div>
+
+    <div id="barraProgreso"><div id="progreso"></div></div>
+
+    <!-- Mapa de preguntas -->
+    <div id="mapa-preguntas"></div>
+
+    <div id="contenedorPregunta" class="question-card"></div>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" onclick="anterior()">← Anterior</button>
+      <button class="btn-mark" id="btnMarcar" onclick="marcar()">🔖 Marcar</button>
+      <button class="btn-secondary" onclick="siguiente()">Siguiente →</button>
+    </div>
+
+    <button class="btn-finish" onclick="confirmarFinalizar()">Terminar simulacro</button>
+  </div>
+
+  <!-- PAUSA -->
+  <div id="pantalla-pausa" class="screen overlay" style="display:none">
+    <div class="pause-card">
+      <div style="font-size:3rem">⏸</div>
+      <h2>Simulacro pausado</h2>
+      <p>Tu progreso está guardado.</p>
+      <button class="btn-primary" onclick="togglePausa()">Reanudar</button>
+    </div>
+  </div>
+
+  <!-- FIN -->
+  <div id="pantalla-fin" class="screen" style="display:none">
+    <div class="logo">✅</div>
+    <h2>Simulacro completado</h2>
+    <div id="resumen-score"></div>
+    <div class="fin-buttons">
+      <button class="btn-primary" onclick="descargarRevision()">📥 Descargar revisión</button>
+      <button class="btn-secondary" onclick="reiniciar()">🔄 Volver a intentar</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
